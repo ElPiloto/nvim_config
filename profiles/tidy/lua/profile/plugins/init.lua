@@ -88,8 +88,8 @@ M.setup = function()
 
   require'packer.luarocks'.install_commands()
 
-  packer.use_rocks {'penlight', version = '1.13.1-1'}
-  packer.use_rocks 'lua-xmlreader'
+  --packer.use_rocks {'penlight', version = '1.13.1-1'}
+  --packer.use_rocks 'lua-xmlreader'
 
   --packer.reset()
   local use = packer.use
@@ -178,6 +178,7 @@ M.setup = function()
     after='telescope.nvim',
   }
 
+  neotree_profile.setup(use)
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-path'
@@ -185,13 +186,26 @@ M.setup = function()
   --use 'hrsh7th/vim-vsnip'   --  nvim-cmp requires a snippet plugin, see docs
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use 'neovim/nvim-lspconfig'
 
 
   use {'nvim-treesitter/nvim-treesitter', config=treesitter_profile.setup}
+  use {'nvim-treesitter/nvim-treesitter-textobjects'}
   -- Additional textobjects for treesitter
-  --use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'williamboman/nvim-lsp-installer'
+  use 'neovim/nvim-lspconfig'
+  use {
+    'williamboman/mason.nvim',
+    config = function()
+      require("mason").setup()
+    end
+  }
+  use {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "sumneko_lua", "pyright" }
+      })
+    end
+  }
 
   use 'jose-elias-alvarez/null-ls.nvim'
   use {'stevearc/aerial.nvim', config=aerial_profile.setup}

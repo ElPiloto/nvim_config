@@ -64,6 +64,8 @@ local pseudo_safe_delete = function(path)
     print('Not deleting, path = "' .. path .. '"')
     return
   end
+  print('Deleting ...' .. path)
+  --TODO(ElPiloto): This needs to have rf and d flags to work.
   vim.fn.delete(path)
 end
 

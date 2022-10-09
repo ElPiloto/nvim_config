@@ -8,14 +8,12 @@ M.config = function(local_settings)
 end
 
 
-M.setup = function(use, after)
+M.setup = function(use)
   --Trying alternative tree window
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   use {
   "nvim-neo-tree/neo-tree.nvim",
-    after=after,
-    branch = "external_sources_take_2",
-    --branch = "v2.x",
+    branch = "v2.x",
     requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended

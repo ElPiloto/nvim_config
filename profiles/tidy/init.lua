@@ -43,7 +43,8 @@ local setup_keybindings = function()
 
   vim.keymap.set('n',
                  '<leader>pt',
-                 '<cmd>lua require("telescope.builtin").find_files({search_dirs = {require("profile_utils").get_profile_root_dir()}})<CR>'
+                 '<cmd>lua require("telescope.builtin").find_files({search_dirs = {require("profile_utils").get_profile_root_dir()}})<CR>',
+                 {desc='Telescope Profile Files'}
                  )
 
   -- Commenting
