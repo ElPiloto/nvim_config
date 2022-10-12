@@ -76,12 +76,13 @@ M.setup = function()
   local plugins = get_plugins()
   local aerial_profile = require('profile.plugins.aerial').config(M._local_settings)
   local alpha_profile = require('profile.plugins.alpha').config(M._local_settings)
-  local neotree_profile = require('profile.plugins.neotree').config(M._local_settings)
+  local dap_profile = require('profile.plugins.dap').config(M._local_settings)
   local lightbulb_profile = require('profile.plugins.lightbulb').config(M._local_settings)
   local lsp_signature_profile = require('profile.plugins.lsp_signature').config(M._local_settings)
   local lualine_profile = require('profile.plugins.lualine').config(M._local_settings)
-  local treesitter_profile = require('profile.plugins.treesitter').config(M._local_settings)
+  local neotree_profile = require('profile.plugins.neotree').config(M._local_settings)
   local tabline_profile = require('profile.plugins.tabline').config(M._local_settings)
+  local treesitter_profile = require('profile.plugins.treesitter').config(M._local_settings)
   local whichkey_profile = require('profile.plugins.whichkey').config(M._local_settings)
 
   local packer = require('packer')
@@ -179,6 +180,7 @@ M.setup = function()
   }
 
   neotree_profile.setup(use)
+  dap_profile.setup(use)
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-path'
